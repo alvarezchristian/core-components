@@ -1,28 +1,62 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput} from 'react-native';
+import React from 'react'
+
+
+var texto=''
 
 export default function App() {
+  const [value, onChangeText]=React.useState('');
+  const buttonEvent = ()=>{
+    console.log('value')
+  }
   return (
-    <View style={styles.container}>
-      <Text>gdfg</Text>
-      <Button
-      style={styles.buttonColor}
-      title="Learn More"
-      accessibilityLabel="Learn more about this purple button"
-    />
-      <StatusBar style="auto" />
+    <View style={styles.appContainer}>
+      <View style={styles.inputContainer}>
+        <TextInput style={styles.textInput} placeholder='Ingresar contacto' value={texto} onChangeText={t => onChangeText(t)}>
+        </TextInput>
+        <Button title='Agregar contacto' onPress={buttonEvent}/>
+      </View>
+
+      <View style={styles.contactContainer}>
+        <Text>Lista de Contactos</Text>
+        <Text>Lista de Contactos</Text>
+        <Text>Lista de Contactos</Text>
+        <Text>Lista de Contactos</Text>
+        <Text>Lista de Contactos</Text>
+        
+      </View>
+
+
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  buttonColor: {
-    color: "#841584"
-  },
-  container: {
+  appContainer: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: 30,
+    paddingHorizontal: 10
   },
+  inputContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+    borderBottomWidth: 1
+  },
+  textInput: {
+    borderWidth: 1,
+    backgroundColor: '#fff'
+  },
+  contactContainer: {
+    flex:5
+  },
+  textInput: {
+    borderWidth:1,
+    borderColor: 'green',
+    alignContent:'center',
+    width: '70%'
+
+  }
 });
